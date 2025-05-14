@@ -14,10 +14,10 @@ module.exports = function override(config, env) {
     ({ constructor }) => constructor && constructor.name === 'ModuleScopePlugin'
   );
 
-  if(scopePluginIndex > 0) {
-    config.resolve.plugins.splice(scopePluginIndex, 1);
+  //if(scopePluginIndex > 0) {
+  if(scopePluginIndex != -1) {
+  config.resolve.plugins.splice(scopePluginIndex, 1);
   }
-
 
   config.plugins.push(new NodePolyfillPlugin({
     excludeAliases: ['console']
