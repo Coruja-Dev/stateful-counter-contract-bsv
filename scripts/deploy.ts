@@ -1,5 +1,5 @@
 import { writeFileSync } from 'fs'
-import { CounterBsv } from '../src/contracts/counterBsv'
+import { Counter } from '../src/contracts/counter'
 import { privateKey } from './privateKey'
 import { bsv, TestWallet, DefaultProvider, sha256 } from 'scrypt-ts'
 
@@ -12,7 +12,7 @@ function getScriptHash(scriptPubKeyHex: string) {
 }
 
 async function main() {
-    await CounterBsv.loadArtifact()
+    await Counter.loadArtifact()
 
     // Prepare signer. 
     // See https://scrypt.io/docs/how-to-deploy-and-call-a-contract/#prepare-a-signer-and-provider
@@ -23,7 +23,7 @@ async function main() {
     // TODO: Adjust the amount of satoshis locked in the smart contract:
     const amount = 100
 
-    const instance = new CounterBsv(
+    const instance = new Counter(
         // TODO: Pass constructor parameter values.
         0n
     )
@@ -39,7 +39,7 @@ async function main() {
     const shFile = `.scriptHash`;
     writeFileSync(shFile, scriptHash);
 
-    console.log('CounterBsv contract was successfully deployed!')
+    console.log('Counter contract was successfully deployed!')
     console.log(`TXID: ${deployTx.id}`)
     console.log(`scriptHash: ${scriptHash}`)
 }

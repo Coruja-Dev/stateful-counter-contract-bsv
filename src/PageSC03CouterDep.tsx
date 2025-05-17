@@ -47,7 +47,7 @@ function PageSC03CouterDep() {
         //const message = toByteString('hello world', true)
         //Linha necessária nesta versão
         //O signee deve ser connectado
-        await signer.connect(provider)
+        await (signer as any).connect(provider)
 
         console.log('Até aqui: ')
         
@@ -58,7 +58,7 @@ function PageSC03CouterDep() {
 
         console.log('Até aqui: ')
         
-        const deployTx = new bsv.Transaction(await instance.deploy(amount));
+        const deployTx = new bsv.Transaction(await instance.deploy(amount) as unknown as string);
 
         console.log('Counter contract deployed: ', deployTx.id)
         

@@ -48,7 +48,7 @@ function PageSC06CounterFinish() {
   
         //Linha necessária nesta versão
         //O signee deve ser connectado
-        await signer.connect(provider)
+        await (signer as any).connect(provider)
   
         
         //const message = toByteString('hello world', true)

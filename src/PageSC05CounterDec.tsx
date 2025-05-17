@@ -45,7 +45,7 @@ function PageSC05CounterDec() {
   
         //Linha necessária nesta versão
         //O signee deve ser connectado
-        await signer.connect(provider)
+        await (signer as any).connect(provider)
         
         let tx = new bsv.Transaction
         //////////////////////////////////////////////////////
